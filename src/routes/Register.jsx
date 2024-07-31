@@ -7,7 +7,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { useState } from "react";
-import { GiCloudUpload } from "react-icons/gi";
+// import { GiCloudUpload } from "react-icons/gi";
 import { IoCloudUploadSharp } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 import { toast } from "react-toastify";
