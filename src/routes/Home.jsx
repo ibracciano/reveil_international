@@ -128,6 +128,12 @@ const Home = () => {
             <span>Se connecter avec Google</span>
           </button>
         )}
+
+        {userInfo && userInfo.role === "admin" && (
+          <p className="mt-3 italic">
+            <Link to="/dashboard"> &rarr; Aller au tableau de bord</Link>
+          </p>
+        )}
       </div>
     </main>
   );
