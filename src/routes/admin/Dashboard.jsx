@@ -37,8 +37,8 @@ const Dashboard = () => {
       await deleteDoc(docRef);
       setTimeout(() => {
         toast.success("Produit supprimé avec succès!");
-        getPersons();
       }, 1000);
+      getPersons();
     } catch (error) {
       toast.error(error.message);
     }

@@ -1,7 +1,7 @@
 const Person = ({ person, deletePerson }) => {
   const handleDelete = () => {
     if (window.confirm("êtes-vous sur de vouloir supprimer cet individu?")) {
-      deletePerson(person.id);
+      deletePerson(person.idF);
     }
   };
 
