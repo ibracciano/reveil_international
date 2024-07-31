@@ -1,4 +1,10 @@
-const Person = ({ person }) => {
+const Person = ({ person, deletePerson }) => {
+  const handleDelete = () => {
+    if (window.confirm("êtes-vous sur de vouloir supprimer cet individu?")) {
+      deletePerson(person.id);
+    }
+  };
+
   return (
     <div className="p-5 shadow">
       <div className="flex items-center gap-5">
@@ -19,7 +25,10 @@ const Person = ({ person }) => {
           <p className="text-sm font-medium">Eglise : {person.eglise}</p>
         </div>
       </div>
-      <button className="w-full py-1 mt-3 text-white bg-purple-500 rounded-md hover:bg-black">
+      <button
+        className="w-full py-1 mt-3 text-white bg-purple-500 rounded-md hover:bg-black"
+        onClick={handleDelete}
+      >
         Supprimer
       </button>
     </div>

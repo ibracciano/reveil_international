@@ -1,9 +1,10 @@
 // import React from 'react'
 
-import { collection, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import { useEffect, useState } from "react";
 import Person from "../../components/Person";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
   // recuperer des données depuis le firestore
@@ -30,6 +31,19 @@ const Dashboard = () => {
     getPersons();
   }, []);
 
+  const deletePerson = async (id) => {
+    const docRef = doc(db, "personnes", id);
+    try {
+      await deleteDoc(docRef);
+      setTimeout(() => {
+        toast.success("Produit supprimé avec succès!");
+        getPersons();
+      }, 1000);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   return (
     <div>
       <div className="w-[90%] md:[w-80%] mx-auto">
@@ -38,7 +52,11 @@ const Dashboard = () => {
         </h1>
         <div className="grid grid-cols-1 gap-5 mt-10 md:grid-cols-3">
           {data.map((person) => (
-            <Person key={person.id} person={person} />
+            <Person
+              key={person.id}
+              person={person}
+              deletePerson={deletePerson}
+            />
           ))}
         </div>
       </div>
